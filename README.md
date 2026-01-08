@@ -90,14 +90,3 @@ Após a execução:
 - Os QR Codes gerados serão salvos dentro dessa pasta
 
 ---
-
-## 📝 Licença
-
-Este projeto está sob a licença MIT. Sinta-se livre para usar e modificar.
-
----
-
-## 👤 Autor
-
-Desenvolvido por [Hellen Marinho](https://github.com/hmarinhoo)
-
