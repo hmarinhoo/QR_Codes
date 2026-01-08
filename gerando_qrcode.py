@@ -3,12 +3,19 @@ from PIL import Image, ImageDraw, ImageFont
 from teste_api import repositorios
 import os
 
-def get_reposit(nome_repositorio, usuario="hmarinhoo"):
+# Pasta onde os QR Codes serão salvos
+OUTPUT_DIR = "qrcodes"
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+def gerar_qrcode_repositorio(nome_repositorio, usuario="hmarinhoo"):
     # Monta a URL do repositório
     url = f"https://github.com/{usuario}/{nome_repositorio}"
-    nome_arquivo = f"qrcode_{usuario}_{nome_repositorio.replace(' ', '_')}.png"
+    nome_arquivo = os.path.join(
+        OUTPUT_DIR,
+        f"qrcode_{usuario}_{nome_repositorio.replace(' ', '_')}.png"
+    )
 
-    # Cria o QR Code
+    # Cria o QR Code com personalização de cores
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_H,
@@ -34,25 +41,23 @@ def get_reposit(nome_repositorio, usuario="hmarinhoo"):
 
     # Cria uma nova imagem maior para incluir o texto
     new_height = height + text_height + 20
-    final_img = Image.new("RGB", (width, new_height), "white")
-    final_img.paste(qr_img, (0, 0))
+    image_final = Image.new("RGB", (width, new_height), "white")
+    image_final.paste(qr_img, (0, 0))
 
     # Escreve o nome do repositório centralizado abaixo do QR
-    draw_final = ImageDraw.Draw(final_img)
+    draw_final = ImageDraw.Draw(image_final)
     position = ((width - text_width) // 2, height + 10)
     draw_final.text(position, nome_repositorio, fill="#ff91b2", font=font)
 
     # Salva a imagem
-    try:
-        final_img.save(nome_arquivo)
-        print(f"QR Code salvo como: {nome_arquivo}")
-    except Exception as e:
-        print(f"Erro ao criar e salvar o QR Code: {e}")
+    image_final.save(nome_arquivo)
+    print(f"QR Code salvo como: {nome_arquivo}")
+
 
 # Vai percorrer a lista repositórios e criar um qrcpode para cada item da lista.
 def main():
     for repositorio in repositorios:
-        get_reposit(repositorio["nome"])
+        gerar_qrcode_repositorio(repositorio["nome"])
 
 if __name__ == "__main__":
     main()
