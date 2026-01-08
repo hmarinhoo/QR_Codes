@@ -11,7 +11,9 @@ O foco deste projeto é demonstrar **organização de código**, **automação**
 
 A imagem abaixo é um exemplo de QR Code criado pelo script após a execução:
 
-![Exemplo de QR Code](assets/exemplo_qrcode.png)
+<div align="center">
+  <img src="assets/exemplo_qrcode.png" alt="Exemplo de QR Code" width="300">
+</div>
 
 ---
 
