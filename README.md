@@ -28,20 +28,24 @@ A imagem abaixo é um exemplo de QR Code criado pelo script após a execução:
 ## 🛠️ Tecnologias utilizadas
 
 - Python 3
-- [qrcode](https://pypi.org/project/qrcode/)
-- [Pillow (PIL)](https://pypi.org/project/Pillow/)
+- qrcode
+- Pillow (PIL)
 
 ---
 
 ## 📂 Estrutura do projeto
-
 ```text
 QR_Codes/
-│── gerando_qrcode.py
-│── teste_api.py
-│── README.md
-│── assets/
+├── gerando_qrcode.py
+├── teste_api.py
+├── README.md
+├── assets/
 │   └── exemplo_qrcode.png
+└── qrcodes/
+    └── (QR codes gerados)
+```
+
+---
 
 ## ⚙️ Pré-requisitos
 
@@ -53,28 +57,45 @@ QR_Codes/
 ## 📦 Instalação das dependências
 
 No terminal, dentro da pasta do projeto, execute:
-
 ```bash
 pip install qrcode Pillow
+```
+
+---
 
 ## 🧾 Configuração dos dados
 
 No arquivo `teste_api.py`, defina os repositórios que terão QR Codes gerados:
-
 ```python
 repositorios = [
     {"nome": "nome-do-repositorio"},
     {"nome": "outro-repositorio"}
 ]
+```
+
+---
 
 ## ▶️ Como executar o projeto
 
 No terminal, na raiz do projeto:
-
 ```bash
 python gerando_qrcode.py
+```
 
 Após a execução:
 
 - A pasta `qrcodes/` será criada automaticamente  
 - Os QR Codes gerados serão salvos dentro dessa pasta
+
+---
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT. Sinta-se livre para usar e modificar.
+
+---
+
+## 👤 Autor
+
+Desenvolvido por [Hellen Marinho](https://github.com/hmarinhoo)
+
